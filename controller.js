@@ -13,6 +13,53 @@ const path = require("path");
 const multer = require("multer");
 const fs = require("fs");
 
+//GET ALL USER
+exports.users = function (req, res) {
+  connection.query("select * from user", function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+    } else {
+      response.ok(rows, res);
+    }
+  });
+};
+
+//GET ALL PELANGGAN
+exports.customers = function (req, res) {
+  connection.query("select * from pelanggan", function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+    } else {
+      response.ok(rows, res);
+    }
+  });
+};
+
+//GET ALL PRODUK
+exports.products = function (req, res) {
+  connection.query("select * from produk", function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+    } else {
+      response.ok(rows, res);
+    }
+  });
+};
+
+//GET ALL TRANSAKSI
+exports.transactions = function (req, res) {
+  connection.query(
+    "select pl.nama,pr.nama_produk from transaksi t, produk pr, pelanggan pl where t.email_pelanggan = pl.email and t.produk_id = pr.produk_id",
+    function (error, rows, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        response.ok(rows, res);
+      }
+    }
+  );
+};
+
 //POST PRODUK
 exports.insertProduk = function (req, res) {
   const postData = req.body;
@@ -39,7 +86,10 @@ exports.insertProduk = function (req, res) {
       }
     });
   } else {
-    res.status(404).send("invalid request, check your token first ..");
+    const response = {
+      status: "invalid request, check your token first ..",
+    };
+    res.status(404).send(response);
   }
 };
 
@@ -71,7 +121,10 @@ exports.insertPelanggan = function (req, res) {
       }
     });
   } else {
-    res.status(404).send("invalid request, check your token first ..");
+    const response = {
+      status: "invalid request, check your token first ..",
+    };
+    res.status(404).send(response);
   }
 };
 
@@ -102,7 +155,10 @@ exports.insertTrans = function (req, res) {
       }
     });
   } else {
-    res.status(404).send("invalid request, check your token first ..");
+    const response = {
+      status: "invalid request, check your token first ..",
+    };
+    res.status(404).send(response);
   }
 };
 
