@@ -7,16 +7,8 @@
     "watch": "nodemon ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/excel1901/demo-BackEnd.git"
-  },
   "author": "excel alexander",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/excel1901/demo-BackEnd/issues"
-  },
-  "homepage": "https://github.com/excel1901/demo-BackEnd#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "ejs": "^3.1.5",
